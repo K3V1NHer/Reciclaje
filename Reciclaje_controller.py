@@ -1,5 +1,5 @@
 from Reciclaje_model import Familia, Plastico, Vidrio, Papel, MaterialReciclado
-import Reciclaje_view as vista  
+import Reciclaje_view as vista
 
 class Controlador:
     def __init__(self):
@@ -27,8 +27,8 @@ class Controlador:
             nombre, integrantes, direccion = vista.pedir_familia()
             self.familias.append(Familia(nombre, integrantes, direccion))
             print("Familia registrada.")
-        except ValueError:
-            print("Error: número de integrantes inválido.")
+        except Exception as e:
+            print(f"Error: {e}")
 
     def registrar_material(self):
         if not self.familias:
@@ -36,19 +36,14 @@ class Controlador:
             return
         try:
             idx = vista.seleccionar_familia(self.familias)
-            if idx < 0 or idx >= len(self.familias):
-                print("Índice fuera de rango.")
-                return
             tipo, peso, fecha = vista.pedir_material()
 
             if tipo == "plastico":
                 material = Plastico(tipo, peso, fecha)
             elif tipo == "vidrio":
                 material = Vidrio(tipo, peso, fecha)
-            elif tipo == "papel":
+            else:  # papel
                 material = Papel(tipo, peso, fecha)
-            else:
-                material = MaterialReciclado(tipo, peso, fecha)
 
             self.familias[idx].agregar_material(material)
             print("Material registrado.")
