@@ -90,3 +90,7 @@ El código se organiza en los siguientes componentes clave, siguiendo el patrón
         * Luego, llama a la función `mostrar_resumen()` de la `Vista` para mostrar esta información en la consola.
 6.  **Salir:**
     * Si el usuario selecciona "Salir", el programa muestra un mensaje de despedida y finaliza su ejecución.
+
+![diagrama de caso](docs/Diagrama_de_casos_de_uso.png)
+
+![diagrama de caso](docs/diagrama_clases_mvd_reciclaje.png)
