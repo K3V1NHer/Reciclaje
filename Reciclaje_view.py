@@ -1,6 +1,7 @@
 import re
 
 def mostrar_menu():
+    # Muestra el menú principal de opciones
     print("\n--- Sistema de Reciclaje por Familias ---")
     print("1. Registrar familia")
     print("2. Registrar material reciclado")
@@ -8,6 +9,7 @@ def mostrar_menu():
     print("4. Salir")
 
 def pedir_familia():
+    # Solicita los datos de una nueva familia y los valida
     while True:
         nombre = input("Nombre de la familia (solo letras): ").strip()
         if not nombre.isalpha():
@@ -26,6 +28,7 @@ def pedir_familia():
     return nombre, integrantes, direccion
 
 def seleccionar_familia(familias):
+    # Permite seleccionar una familia de la lista de familias registradas
     print("\nFamilias registradas:")
     for i, fam in enumerate(familias):
         print(f"{i + 1}. {fam.nombre}")
@@ -40,6 +43,7 @@ def seleccionar_familia(familias):
             print("Error: debe ingresar un número.")
 
 def pedir_material():
+    # Solicita y valida los datos de un material reciclado
     tipos_validos = {"plastico", "vidrio", "papel"}
     while True:
         tipo = input("Tipo de material (plastico, vidrio, papel): ").lower().strip()
@@ -70,6 +74,7 @@ def pedir_material():
     return tipo, peso, fecha
 
 def mostrar_resumen(familia):
+    # Muestra el resumen de materiales reciclados y puntos para una familia
     print(f"\nResumen de materiales para {familia.nombre}:")
     resumen, total = familia.obtener_resumen()
     for tipo, peso, puntos in resumen:
